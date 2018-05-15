@@ -10,6 +10,7 @@
 
 @interface DRCircleListView ()
 @property (nonatomic, strong) CAShapeLayer *contentlayer;
+@property (nonatomic, strong) UIView *contentView;
 @end
 
 @implementation DRCircleListView
@@ -19,12 +20,18 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = UIColor.yellowColor;
-        self.contentlayer = [[CAShapeLayer alloc] init];
-        UIBezierPath *b = [UIBezierPath bezierPathWithOvalInRect:self.frame];
-        self.contentlayer.path = b.CGPath;
-        self.contentlayer.frame = self.frame;
-        self.contentlayer.fillColor = UIColor.cyanColor.CGColor;
-        [self.layer addSublayer:self.contentlayer];
+//        self.contentlayer = [[CAShapeLayer alloc] init];
+//        UIBezierPath *b = [UIBezierPath bezierPathWithOvalInRect:self.frame];
+//        self.contentlayer.path = b.CGPath;
+//        self.contentlayer.frame = self.frame;
+//        self.contentlayer.fillColor = UIColor.cyanColor.CGColor;
+//        [self.layer addSublayer:self.contentlayer];
+        
+        self.contentView = [[UIView alloc] initWithFrame:frame];
+        self.contentView.layer.cornerRadius = self.contentView.frame.size.width/2.0;
+        self.contentView.backgroundColor = UIColor.cyanColor;
+        [self addSubview:self.contentView];
+        
         [self one];
     }
     return self;
@@ -61,9 +68,9 @@
  */
 - (void)rotateByRadian:(CGFloat)radian {
     
-    CGAffineTransform transform = self.contentlayer.affineTransform;
+    CGAffineTransform transform = self.contentView.layer.affineTransform;
     transform = CGAffineTransformRotate(transform, radian);
-    self.contentlayer.affineTransform = transform;
+    self.contentView.layer.affineTransform = transform;
 }
 
 - (void)one {
@@ -79,11 +86,22 @@
         // 等分点
         CGPoint position = path.currentPoint;
         // 在相应等分点上绘制元素
-        UIBezierPath *p = [UIBezierPath bezierPathWithArcCenter:position radius:45/2.0 startAngle:0 endAngle:2*M_PI clockwise:YES];
-        CAShapeLayer *layer = [[CAShapeLayer alloc] init];
-        layer.fillColor = UIColor.blueColor.CGColor;
-        layer.path = p.CGPath;
-        [self.contentlayer addSublayer: layer];
+//        UIBezierPath *p = [UIBezierPath bezierPathWithArcCenter:position radius:45/2.0 startAngle:0 endAngle:2*M_PI clockwise:YES];
+//        CAShapeLayer *layer = [[CAShapeLayer alloc] init];
+//        layer.fillColor = UIColor.blueColor.CGColor;
+//        layer.path = p.CGPath;
+//        [self.contentlayer addSublayer: layer];
+        UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
+        img.center = position;
+        img.backgroundColor = UIColor.redColor;
+        img.layer.cornerRadius = 45/2.0;
+        img.layer.masksToBounds = YES;
+        img.tag = i+1000;
+        img.userInteractionEnabled = YES;
+        [self.contentView addSubview:img];
+
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        [img addGestureRecognizer:tap];
         
         // 等分弧线段
         CAShapeLayer *circleLayer = [[CAShapeLayer alloc] init];
@@ -91,8 +109,16 @@
         circleLayer.fillColor = nil;
         circleLayer.strokeColor = (i%2 == 0) ? UIColor.redColor.CGColor : UIColor.greenColor.CGColor;
         circleLayer.path = path.CGPath;
-        [self.contentlayer addSublayer:circleLayer];
+        [self.contentView.layer addSublayer:circleLayer];
     }
+}
+
+- (void)tap {
+    NSLog(@"点击list");
+}
+
+- (void)btnClick:(UIButton *)sender {
+    NSLog(@"点击list%d",sender.tag);
 }
 
 // 根据cell决定圆盘大小
