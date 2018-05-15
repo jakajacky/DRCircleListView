@@ -15,6 +15,7 @@
 		C353789720AAE23E001196C3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C353789620AAE23E001196C3 /* main.m */; };
 		C35378A120AAE23E001196C3 /* CircleListViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35378A020AAE23E001196C3 /* CircleListViewDemoTests.m */; };
 		C35378AC20AAE23E001196C3 /* CircleListViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C35378AB20AAE23E001196C3 /* CircleListViewDemoUITests.m */; };
+		C35378BB20AAE253001196C3 /* DRCircleListView.m in Sources */ = {isa = PBXBuildFile; fileRef = C35378BA20AAE253001196C3 /* DRCircleListView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		C35378A720AAE23E001196C3 /* CircleListViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CircleListViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C35378AB20AAE23E001196C3 /* CircleListViewDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleListViewDemoUITests.m; sourceTree = "<group>"; };
 		C35378AD20AAE23E001196C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C35378B920AAE253001196C3 /* DRCircleListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DRCircleListView.h; sourceTree = "<group>"; };
+		C35378BA20AAE253001196C3 /* DRCircleListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRCircleListView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,8 @@
 				C353788820AAE23C001196C3 /* AppDelegate.m */,
 				C353788A20AAE23C001196C3 /* ViewController.h */,
 				C353788B20AAE23C001196C3 /* ViewController.m */,
+				C35378B920AAE253001196C3 /* DRCircleListView.h */,
+				C35378BA20AAE253001196C3 /* DRCircleListView.m */,
 				C353788D20AAE23C001196C3 /* Main.storyboard */,
 				C353789020AAE23E001196C3 /* Assets.xcassets */,
 				C353789220AAE23E001196C3 /* LaunchScreen.storyboard */,
@@ -262,6 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C35378BB20AAE253001196C3 /* DRCircleListView.m in Sources */,
 				C353788C20AAE23C001196C3 /* ViewController.m in Sources */,
 				C353789720AAE23E001196C3 /* main.m in Sources */,
 				C353788920AAE23C001196C3 /* AppDelegate.m in Sources */,
@@ -434,6 +440,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Y7VB3CC26;
 				INFOPLIST_FILE = CircleListViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -450,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9Y7VB3CC26;
 				INFOPLIST_FILE = CircleListViewDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

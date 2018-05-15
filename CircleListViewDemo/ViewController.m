@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "DRCircleListView.h"
 @interface ViewController ()
 
 @end
@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    DRCircleListView *cir = [[DRCircleListView alloc] initWithFrame:CGRectMake(0, 0, 1450, 1450)];
+    cir.center = CGPointMake(375/2.0, 725-120+667);
+    [self.view addSubview:cir];
 }
 
 
