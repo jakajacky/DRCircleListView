@@ -98,6 +98,7 @@
 //        [self.contentlayer addSublayer: layer];
         UIImageView *img = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 45, 45)];
         img.center = position;
+        img.image = self.images[i%self.images.count];
         img.backgroundColor = UIColor.redColor;
         img.layer.cornerRadius = 45/2.0;
         img.layer.masksToBounds = YES;

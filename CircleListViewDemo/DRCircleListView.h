@@ -17,6 +17,8 @@
 
 @property (nonatomic, assign) CGFloat changedRadian;
 
+@property (nonatomic, strong) NSArray *images;
+
 /**
  *  将图层旋转radian弧度
  *  @param radian 旋转的弧度
