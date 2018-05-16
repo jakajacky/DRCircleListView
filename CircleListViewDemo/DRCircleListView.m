@@ -78,7 +78,12 @@
     CGFloat angle = 360.0/N * M_PI/180.0;
     
     for (int i = 0; i < N; i++) {
-        CGFloat start = i*angle - 90*M_PI/180;
+        CGFloat c_L = [UIApplication sharedApplication].windows.firstObject.bounds.size.width-45-2*2; // 弦长
+        CGFloat c_R = R; // 半径
+        CGFloat c_angle = 2*asinf(c_L/(c_R*2));// 圆心角
+        CGFloat c_angle_real = c_angle/(M_PI/180);
+        CGFloat c_total_angle = (180-(180-c_angle_real)/2.0);
+        CGFloat start = i*angle - c_total_angle*M_PI/180 - angle;
         CGFloat end = start + angle;
         
         // 可以利用贝塞尔path获取圆弧终点的位置CGPoint
@@ -100,7 +105,7 @@
         img.userInteractionEnabled = YES;
         [self.contentView addSubview:img];
 
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap:)];
         [img addGestureRecognizer:tap];
         
         // 等分弧线段
@@ -113,12 +118,9 @@
     }
 }
 
-- (void)tap {
-    NSLog(@"点击list");
-}
-
-- (void)btnClick:(UIButton *)sender {
-    NSLog(@"点击list%d",sender.tag);
+- (void)tap:(UIGestureRecognizer *)ges {
+    UIImageView *img = ges.view;
+    NSLog(@"点击list%ld",img.tag);
 }
 
 // 根据cell决定圆盘大小
